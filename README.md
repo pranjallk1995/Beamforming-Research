@@ -5,8 +5,10 @@
 ![scipy (latest)](https://img.shields.io/pypi/v/scipy?label=lateset)
 ![plotly](https://img.shields.io/badge/plotly-v5.4.0-information)
 ![plotly (latest)](https://img.shields.io/pypi/v/plotly?label=lateset)
-![nbformat](https://img.shields.io/badge/plotly-v5.1.3-information)
+![nbformat](https://img.shields.io/badge/nbformat-v5.1.3-information)
 ![nbformat (latest)](https://img.shields.io/pypi/v/nbformat?label=lateset)
+![chart-studio](https://img.shields.io/badge/chart--studio-v1.1.0-information)
+![chart-studio (latest)](https://img.shields.io/pypi/v/chart-studio?label=lateset)
 
 # Introduction
 This Repository is a compilation of Beamforming experiments in python as a part of our research.
