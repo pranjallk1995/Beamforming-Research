@@ -6,3 +6,4 @@ chart-studio >= 1.1.0
 tqdm >= 4.62.3
 prettytable >= 2.4.0
 ipywidgets >= 7.6.5
+jupyterlab >= 3.2.4

@@ -15,6 +15,8 @@
 ![prettytable (latest)](https://img.shields.io/pypi/v/prettytable?label=lateset)
 ![ipywidgets](https://img.shields.io/badge/ipywidgets-v7.6.5-information)
 ![ipywidgets (latest)](https://img.shields.io/pypi/v/ipywidgets?label=lateset)
+![jupyterlab](https://img.shields.io/badge/jupyterlab-v3.2.4-information)
+![jupyterlab (latest)](https://img.shields.io/pypi/v/jupyterlab?label=lateset)
 
 # Introduction
 This Repository is a compilation of Beamforming experiments in python as a part of our research.
