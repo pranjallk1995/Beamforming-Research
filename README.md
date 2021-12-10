@@ -13,6 +13,8 @@
 ![tqdm (latest)](https://img.shields.io/pypi/v/tqdm?label=lateset)
 ![prettytable](https://img.shields.io/badge/prettytable-v2.4.0-information)
 ![prettytable (latest)](https://img.shields.io/pypi/v/prettytable?label=lateset)
+![ipywidgets](https://img.shields.io/badge/ipywidgets-v7.6.5-information)
+![ipywidgets (latest)](https://img.shields.io/pypi/v/ipywidgets?label=lateset)
 
 # Introduction
 This Repository is a compilation of Beamforming experiments in python as a part of our research.
