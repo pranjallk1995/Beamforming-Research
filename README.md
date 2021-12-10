@@ -9,12 +9,22 @@
 ![nbformat (latest)](https://img.shields.io/pypi/v/nbformat?label=lateset)
 ![chart-studio](https://img.shields.io/badge/chart--studio-v1.1.0-information)
 ![chart-studio (latest)](https://img.shields.io/pypi/v/chart-studio?label=lateset)
+![tqdm](https://img.shields.io/badge/tqdm-v4.62.3-information)
+![tqdm (latest)](https://img.shields.io/pypi/v/tqdm?label=lateset)
+![prettytable](https://img.shields.io/badge/prettytable-v2.4.0-information)
+![prettytable (latest)](https://img.shields.io/pypi/v/prettytable?label=lateset)
 
 # Introduction
 This Repository is a compilation of Beamforming experiments in python as a part of our research.
 
+# Aim
+To find the angular position of the source of sound with the help of a microphone array in a 2D plane.
+
 # Assumptions
-1. The source of sound is fixed.
+1. There are 6 microphones in a linear array.
+1. All microphones are at a common fixed distance away from each other.
+1. The position of the source of sound is unknown in a 2D plane.
+1. The source of sound is in a fixed position with respect to all the microphones.
 1. The source of sound produces some sound for a very breif amount of time (max 0.2 seconds).
 1. There is minimal noise (max 0.5 ?).
 1. There is no echo.
@@ -25,5 +35,5 @@ This Repository is a compilation of Beamforming experiments in python as a part 
 | Metrics | Units |
 |---------|-------|
 | Amplitude | ? |
-| Sampling | 44100 samples/seconds |
+| Sampling | samples/seconds |
 | Time | seconds |
