@@ -30,7 +30,7 @@ To find the angular position of the source of sound with the help of a microphon
 1. The position of the source of sound is unknown in a 2D plane.
 1. The source of sound is in a fixed position with respect to all the microphones.
 1. The source of sound produces some sound for a very breif amount of time (max 0.2 seconds).
-1. There is minimal noise (max 0.5 ?).
+1. There is minimal noise (max 0.5 units).
 1. There is no echo.
 1. There is minimal distortion.
 1. Microphones are of good quality.
@@ -38,6 +38,5 @@ To find the angular position of the source of sound with the help of a microphon
 # Units
 | Metrics | Units |
 |---------|-------|
-| Amplitude | ? |
 | Sampling | samples/seconds |
 | Time | seconds |
