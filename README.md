@@ -58,7 +58,7 @@ To find the angular position of the source of sound with the help of a microphon
 | Sampling Rate | 44100 samples/second | The number of samples taken from a continuous signal to make a digital signal. |
 | Scanning Window | 1.08 seconds | The duration of signal considered for finding the source. |
 | shift | 2000 | Represents the shift of signal in time from source to the closest microphone (not necessary in experiments) |
-| offset | variable | Represents the shift of signal in time from microphone to microphone (depends on $d$). |
+| offset | variable | Represents the shift of signal in time from microphone to microphone (depends on $d$ and $\theta$). |
 | number_of_microphones | 6 | Represents the number of microphones in the microphone array. |
 | step | 100 | Represents the increments of shift in time for a signal. |
 | reference_pulse | NA | The first sound pulse received by any microphone. |
