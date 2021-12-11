@@ -47,3 +47,19 @@ To find the angular position of the source of sound with the help of a microphon
 | Distance | meters |
 | Sampling | samples/seconds |
 | Time | seconds |
+| Angle | degrees |
+
+# Parameter List
+| Parameter | Value | Descripttion |
+|-----------|-------|--------------|
+| $D$ | Unknown | Longitudinal distance of the source of sound from the microphone array. |
+| $\theta$ | Unknown | Angle made by the source of sound from the normal to the microphone array. |
+| $d$ | To be decided | Distance between each microphone. |
+| Sampling Rate | 44100 samples/second | The number of samples taken from a continuous signal to make a digital signal. |
+| Scanning Window | 1.08 seconds | The duration of signal considered for finding the source. |
+| shift | 2000 | Represents the shift of signal in time from source to the closest microphone (not necessary in experiments) |
+| offset | variable | Represents the shift of signal in time from microphone to microphone (depends on $d$). |
+| number_of_microphones | 6 | Represents the number of microphones in the microphone array. |
+| step | 100 | Represents the increments of shift in time for a signal. |
+| reference_pulse | NA | The first sound pulse received by any microphone. |
+| resultant_pulse | NA | The final amplified sound pulse. |
