@@ -19,7 +19,14 @@
 ![jupyterlab (latest)](https://img.shields.io/pypi/v/jupyterlab?label=lateset)
 
 # Introduction
-This Repository is a compilation of Beamforming experiments in python as a part of our research.
+This Repository is a compilation of Cosine-Beamforming implementation in python as a part of our research.
+
+### Owners:
+Pranjall Kumar, Jr. Data Scientist @ Siemens Gamesa (DVL)
+
+Sureshkumar Natrajan, Research scholar @ Universiti Putra Malaysia
+
+<sub>(In alphabetical order)</sub>
 
 # Aim
 To find the angular position of the source of sound with the help of a microphone array in a 2D plane.
