@@ -1,0 +1,11 @@
+prettytable-2.4.0.dist-info/COPYING,sha256=DIrcwgTIr2zf33iH39H5nCmQH2wdUFp4u6lu-k-yywU,1612
+prettytable-2.4.0.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+prettytable-2.4.0.dist-info/METADATA,sha256=2ohF_dBXXX_i_SeQuV-0RKTaxy4KR8TqmBtYnjd90NY,22318
+prettytable-2.4.0.dist-info/RECORD,,
+prettytable-2.4.0.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+prettytable-2.4.0.dist-info/WHEEL,sha256=ewwEueio1C2XeHTvT17n8dZUJgOvyCWCt0WVNLClP9o,92
+prettytable-2.4.0.dist-info/top_level.txt,sha256=UooJrNm6ias54LTjladXtdbjC1Nt9sgd_1t_24UXBTQ,12
+prettytable/__init__.py,sha256=7RH6lJTQh4CHabcMNckPG1_mA9KUD3idS5zBsZd2poU,828
+prettytable/__pycache__/__init__.cpython-310.pyc,,
+prettytable/__pycache__/prettytable.cpython-310.pyc,,
+prettytable/prettytable.py,sha256=TPdkr2PHpmUEWAlwXPnbYWC34m7jMkNPfcFgBmZD_IE,82924
