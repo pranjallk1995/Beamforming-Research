@@ -28,6 +28,7 @@ To find the angular position of the source of sound with the help of a microphon
 1. There are 6 microphones in a linear array.
 1. All microphones are at a common fixed distance away from each other.
 1. The position of the source of sound is unknown in a 2D plane.
+1. The source of sound is sufficiently far away from the microphone array.
 1. The source of sound is in a fixed position with respect to all the microphones.
 1. The source of sound produces some sound for a very breif amount of time (max 0.2 seconds).
 1. There is minimal noise (max 0.5 units).
