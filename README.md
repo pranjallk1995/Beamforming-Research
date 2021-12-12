@@ -42,6 +42,7 @@ To find the angular position of the source of sound with the help of a microphon
 1. There are 6 omnidirectional microphones in a linear array.
 1. All microphones are at a common fixed distance away from each other.
 1. The position of the source of sound is unknown in a 2D plane.
+1. There is only a single source of sound.
 1. The souce of sound is to left of the normal to microphone array (minor change in code will fix this).
 1. The source of sound is a point source.
 1. The source of sound is sufficiently far away from the microphone array.
