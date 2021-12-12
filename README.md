@@ -74,7 +74,7 @@ To find the angular position of the source of sound with the help of a microphon
 | $S$ | 343 meters/second | Speed of sound in dry air at 20 <sup>o</sup>$C$.
 | $delay$ | 0.3 meters | Time taken by the incident wavefront to reach the previous/subsequent incident microphone. |
 | Sampling Rate | 44100 samples/second | The number of samples taken from a continuous signal to make a digital signal. |
-| Scanning Window | 1.08 seconds | The duration of signal considered for finding the source. |
+| Scanning Window | 0.01 seconds | The duration of signal considered for finding the source. |
 | shift | 2000 | Represents the shift of signal in time from source to the closest microphone (not necessary in experiments) |
 | offset | Variable | Represents the shift of signal in time from microphone to microphone (depends on $d$ and $\theta$). |
 | number_of_microphones | 6 | Represents the number of microphones in the microphone array. |
