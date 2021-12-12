@@ -34,6 +34,8 @@ To find the angular position of the source of sound with the help of a microphon
 
 ### Experimental Setup
 ![2D_scenario](/Images/2D_Scenario.jpg "Experimantal Setup")
+## Note:
+Diagram needs to be updated, no need for more than 3 microphones.
 
 ### Calculation of $\theta$
 ![Theta](/Images/Theta.jpg "Calculation of Theta")
