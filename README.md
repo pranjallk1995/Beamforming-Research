@@ -33,9 +33,7 @@ Sureshkumar Natrajan, Research Scholar @ Universiti Putra Malaysia
 To find the angular position of the source of sound with the help of a microphone array in a 2D plane.
 
 ### Experimental Setup
-![2D_scenario](/Images/2D_Scenario.jpg "Experimantal Setup")
-## Note:
-Diagram needs to be updated, no need for more than 3 microphones.
+![Experimental_setup](/Images/Experimental_setup.jpg "Experimantal Setup")
 
 ### Calculation of $\theta$
 ![Theta](/Images/Theta.jpg "Calculation of Theta")
