@@ -25,7 +25,7 @@ This Repository is a compilation of Cosine-Beamforming implementation in python 
 ### Owners
 Pranjall Kumar, Jr. Data Scientist @ Siemens Gamesa (DVL)
 
-Sureshkumar Natrajan, Research Scholar @ Universiti Putra Malaysia
+Sureshkumar Natarajan, Research Scholar @ Universiti Putra Malaysia
 
 <sub>(In alphabetical order)</sub>
 
