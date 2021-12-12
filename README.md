@@ -22,7 +22,7 @@
 This Repository is a compilation of Cosine-Beamforming implementation in python as a part of our research.
 
 
-### Owners:
+### Owners
 Pranjall Kumar, Jr. Data Scientist @ Siemens Gamesa (DVL)
 
 Sureshkumar Natrajan, Research Scholar @ Universiti Putra Malaysia
@@ -32,7 +32,11 @@ Sureshkumar Natrajan, Research Scholar @ Universiti Putra Malaysia
 # Aim
 To find the angular position of the source of sound with the help of a microphone array in a 2D plane.
 
-![2D scenario](/Images/2D_Scenario.jpg "Experimantal Setup")
+### Experimental Setup
+![2D_scenario](/Images/2D_Scenario.jpg "Experimantal Setup")
+
+### Calculation of $\theta$
+![Theta](/Images/Theta.jpg "Calculation of Theta")
 
 # Assumptions
 1. There are 6 omnidirectional microphones in a linear array.
@@ -47,6 +51,7 @@ To find the angular position of the source of sound with the help of a microphon
 1. There is minimal noise (max 0.5 units).
 1. There is no echo.
 1. There is minimal distortion.
+1. The sound medium is dry air at 20 <sup>o</sup>$C$.
 1. Microphones are of good quality.
 
 # Units
@@ -56,6 +61,8 @@ To find the angular position of the source of sound with the help of a microphon
 | Sampling | samples/seconds |
 | Time | seconds |
 | Angle | degrees |
+| Speed | meters/second |
+| Temperature | Celsius |
 
 # Parameter List
 | Parameter | Value | Descripttion |
@@ -63,10 +70,13 @@ To find the angular position of the source of sound with the help of a microphon
 | $D$ | Unknown | Longitudinal distance of the source of sound from the microphone array. |
 | $\theta$ | Unknown | Angle made by the source of sound from the normal to the microphone array. |
 | $d$ | To be decided | Distance between each microphone. |
+| $x$ | Variable | Distance of the incident wavefront from the previous/subsequent incident microphone. | 
+| $S$ | 343 meters/second | Speed of sound in dry air at 20 <sup>o</sup>$C$.
+| $delay$ | 0.3 meters | Time taken by the incident wavefront to reach the previous/subsequent incident microphone. |
 | Sampling Rate | 44100 samples/second | The number of samples taken from a continuous signal to make a digital signal. |
 | Scanning Window | 1.08 seconds | The duration of signal considered for finding the source. |
 | shift | 2000 | Represents the shift of signal in time from source to the closest microphone (not necessary in experiments) |
-| offset | variable | Represents the shift of signal in time from microphone to microphone (depends on $d$ and $\theta$). |
+| offset | Variable | Represents the shift of signal in time from microphone to microphone (depends on $d$ and $\theta$). |
 | number_of_microphones | 6 | Represents the number of microphones in the microphone array. |
 | step | 100 | Represents the increments of shift in time for a signal. |
 | reference_pulse | NA | The first sound pulse received by any microphone. |
