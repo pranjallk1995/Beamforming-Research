@@ -4,10 +4,10 @@ INFO:root:Number of channels: 2
 INFO:root:Length of sound: 1.08 seconds
 INFO:root:Visualiziation for original sound successful
 INFO:root:Visualization for received sounds on all microphones successful
-INFO:root:Beamforming successful in 1.08 seconds
+INFO:root:Beamforming successful in 1.1 seconds
 INFO:root:Text file for Offsets created in Exports folder
 INFO:root:Text file for Delays created in Exports folder
 INFO:root:Visualization for resultant sounds from microphone arrays successful
 INFO:root:Resultant sounds exported successfully
-INFO:root:Theta values of 22.89 and 44.43 calculated successfully
+INFO:root:Theta values of 27.82 and 51.06 calculated successfully
 INFO:root:Text file for Thetas created in Exports folder

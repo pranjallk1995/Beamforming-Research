@@ -5,16 +5,8 @@
 ![scipy (latest)](https://img.shields.io/pypi/v/scipy?label=lateset)
 ![plotly](https://img.shields.io/badge/plotly-v5.4.0-information)
 ![plotly (latest)](https://img.shields.io/pypi/v/plotly?label=lateset)
-![nbformat](https://img.shields.io/badge/nbformat-v5.1.3-information)
-![nbformat (latest)](https://img.shields.io/pypi/v/nbformat?label=lateset)
-![chart-studio](https://img.shields.io/badge/chart--studio-v1.1.0-information)
-![chart-studio (latest)](https://img.shields.io/pypi/v/chart-studio?label=lateset)
 ![prettytable](https://img.shields.io/badge/prettytable-v2.4.0-information)
 ![prettytable (latest)](https://img.shields.io/pypi/v/prettytable?label=lateset)
-![ipywidgets](https://img.shields.io/badge/ipywidgets-v7.6.5-information)
-![ipywidgets (latest)](https://img.shields.io/pypi/v/ipywidgets?label=lateset)
-![jupyterlab](https://img.shields.io/badge/jupyterlab-v3.2.4-information)
-![jupyterlab (latest)](https://img.shields.io/pypi/v/jupyterlab?label=lateset)
 
 
 # Introduction
