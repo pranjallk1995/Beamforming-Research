@@ -46,7 +46,8 @@ To find the angular position of the source of sound with the help of a microphon
 
 
 # Assumptions
-1. There are 6 omnidirectional microphones in a linear array.
+1. There are 3 omnidirectional microphones in a linear array.
+1. There are 2 linear microphone arrays which are $\Delta& distance apart.
 1. All microphones are at a common fixed distance away from each other.
 1. The position of the source of sound is unknown in a 2D plane.
 1. There is only a single source of sound.

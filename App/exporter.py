@@ -17,4 +17,4 @@ class Export:
                 sample_rate, 
                 np.repeat(resultant_sounds[array][:, np.newaxis], number_of_channels, axis = 1)
             )
-        logging.info("Resulltant sounds exported successfully")
+        logging.info("Resultant sounds exported successfully")
