@@ -9,8 +9,6 @@
 ![nbformat (latest)](https://img.shields.io/pypi/v/nbformat?label=lateset)
 ![chart-studio](https://img.shields.io/badge/chart--studio-v1.1.0-information)
 ![chart-studio (latest)](https://img.shields.io/pypi/v/chart-studio?label=lateset)
-![tqdm](https://img.shields.io/badge/tqdm-v4.62.3-information)
-![tqdm (latest)](https://img.shields.io/pypi/v/tqdm?label=lateset)
 ![prettytable](https://img.shields.io/badge/prettytable-v2.4.0-information)
 ![prettytable (latest)](https://img.shields.io/pypi/v/prettytable?label=lateset)
 ![ipywidgets](https://img.shields.io/badge/ipywidgets-v7.6.5-information)
@@ -43,6 +41,10 @@ To find the angular position of the source of sound with the help of a microphon
 ![Theta](/Images/Theta.jpg "Calculation of Theta")
 
 
+### Calculation of source location ($p$)
+![D](/Images/D.jpg "Calculation of source location")
+
+
 # Assumptions
 1. There are 6 omnidirectional microphones in a linear array.
 1. All microphones are at a common fixed distance away from each other.
@@ -59,6 +61,16 @@ To find the angular position of the source of sound with the help of a microphon
 1. There is minimal distortion.
 1. The sound medium is dry air at 20 <sup>o</sup>$C$.
 1. Microphones are of good quality.
+
+
+# Formulas
+* $speed$ = $\frac{distance}{time}$
+* $\sin$($\theta$) = $\frac{\text{opposite side}}{hypotenus}$
+* $Similarity$(_A_, _B_) = $\frac{A.B}{||A|| * ||B||}$
+* $\delta$ = $S$ * $delay$
+* $\theta$ = $sin$<sup>-1</sup>($\frac{\delta}{d}$)
+* $p$<sub>x</sub> = $\frac{2d + \Delta}{tan(\theta_{2}) - tan(\theta_{1})}$
+* $p$<sub>y</sub> = $tan$($\theta_{2}$)$p$<sub>x</sub>
 
 
 # Units
@@ -91,7 +103,7 @@ To find the angular position of the source of sound with the help of a microphon
 | $delay$ | Variable | Time taken by the incident wavefront to reach the previous/subsequent incident microphone. |
 | Sampling Rate | $44100 samples/second$ | The number of samples taken from a continuous signal to make a digital signal. |
 | Scanning Window | $0.2 seconds$ | The duration of signal considered for finding the source. |
-| Shift | $0$ | Represents the shift of signal in time from source to the closest microphone (not necessary in experiments) |
+| Shift | Variable | Represents the shift of signal in time from source to the closest microphone. |
 | Offset | Variable | Represents the shift of signal in time from microphone to microphone (depends on $d$ and $\theta$). |
 | Step | $1$ | Represents the increments of shift in time for a signal. |
 
