@@ -64,7 +64,7 @@ class Visualize:
                 )
         for number in range(number_of_microphones):
             for array in range(number_of_microphone_arrays):
-                titles.append("Microphone " + str(array + 1) + ": Pulse " + str(number + 1))
+                titles.append("Microphone array " + str(array + 1) + ": Pulse " + str(number + 1))
         fig_received_sounds = subplots.make_subplots(
             rows = rows, cols = columns, 
             shared_xaxes = True,

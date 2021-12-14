@@ -82,5 +82,3 @@ if __name__ == "__main__":
         os.remove(log_path)
     logging.basicConfig(filename = "Logs/App_logs.log", level = logging.INFO)
     main()
-    
-    
