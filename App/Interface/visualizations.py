@@ -152,7 +152,7 @@ class Visualize:
             )
         titles = list()
         for array in range(cfg.number_of_microphone_arrays):
-            titles.append("Microphone " + str(array + 1))
+            titles.append("Microphone array " + str(array + 1))
         fig_resultant = subplots.make_subplots(
             rows = cfg.number_of_microphone_arrays, cols = 1, 
             shared_xaxes = True,
