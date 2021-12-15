@@ -16,8 +16,8 @@ def load_sound() -> object:
     except:
         logging.error("Could not load the sound")
     try:
-        if not cfg.suppress_plots:
-            vizualize = Visualize(sound.sound_length, sound.number_of_sample_points)
+        vizualize = Visualize(sound.sound_length, sound.number_of_sample_points)
+        if not cfg.suppress_plots:        
             vizualize.visualize_sound(sound.sound_array, sound.number_of_channels)
     except:
         logging.error("Could not visualize the sound")

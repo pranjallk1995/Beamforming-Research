@@ -21,4 +21,4 @@ output_sound_path = os.path.join(os.getcwd(), "Audio", "Exports")
 output_export_path = os.path.join(os.getcwd(), "Exports")
 
 # suppressors
-suppress_plots = False
+suppress_plots = True
