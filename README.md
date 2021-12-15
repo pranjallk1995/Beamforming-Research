@@ -22,7 +22,7 @@ Sureshkumar Natarajan, Research Scholar @ Universiti Putra Malaysia
 
 
 # Aim
-To find the angular position of the source of sound with the help of a microphone array in a 2D plane.
+To find the angular position of the source of sound with the help of two microphone arrays in a 2D plane.
 
 
 ### Experimental Setup

@@ -5,8 +5,8 @@
 | Sound Pulse |  Actual Delays  | Calculated Delays |
 +-------------+-----------------+-------------------+
 |   Pulse 1   |   0.0 seconds   |    0.0 seconds    |
-|   Pulse 2   |  7e-05 seconds  |   7e-05 seconds   |
-|   Pulse 3   | 0.00014 seconds |  0.00014 seconds  |
+|   Pulse 2   | 0.00011 seconds |  0.00011 seconds  |
+|   Pulse 3   | 0.00023 seconds |  0.00023 seconds  |
 +-------------+-----------------+-------------------+
 
 ################# Microphone 2 ######################
@@ -14,6 +14,6 @@
 | Sound Pulse |  Actual Delays  | Calculated Delays |
 +-------------+-----------------+-------------------+
 |   Pulse 1   |   0.0 seconds   |    0.0 seconds    |
-|   Pulse 2   | 0.00011 seconds |  0.00011 seconds  |
-|   Pulse 3   | 0.00023 seconds |  0.00023 seconds  |
+|   Pulse 2   |  0.0002 seconds |   0.0002 seconds  |
+|   Pulse 3   | 0.00041 seconds |  0.00041 seconds  |
 +-------------+-----------------+-------------------+

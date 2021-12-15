@@ -3,6 +3,6 @@
 +---------+------------+---------------+--------------+
 |  Angle  |   Actual   |   Calculated  |    Error     |
 +---------+------------+---------------+--------------+
-| Theta 1 | 25 degrees | 27.82 degrees | 2.82 degrees |
-| Theta 2 | 45 degrees | 51.06 degrees | 6.06 degrees |
+| Theta 1 | 25 degrees | 22.89 degrees | 2.11 degrees |
+| Theta 2 | 45 degrees | 44.43 degrees | 0.57 degrees |
 +---------+------------+---------------+--------------+
