@@ -4,7 +4,7 @@ INFO:root:Number of channels: 2
 INFO:root:Length of sound: 1.08 seconds
 INFO:root:Visualiziation for original sound successful
 INFO:root:Visualization for received sounds on all microphones successful
-INFO:root:Beamforming successful in 1.23 seconds
+INFO:root:Beamforming successful in 1.14 seconds
 INFO:root:Text file for Offsets created in Exports folder
 INFO:root:Text file for Delays created in Exports folder
 INFO:root:Visualization for resultant sounds from microphone arrays successful
