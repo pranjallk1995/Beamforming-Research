@@ -1,6 +1,5 @@
 import os
 import logging
-import numpy as np
 import App.Config.config as cfg
 
 from App.load import LoadSound
@@ -18,7 +17,8 @@ def load_sound() -> object:
         logging.error("Could not load the sound")
     try:
         vizualize = Visualize(sound.sound_length, sound.number_of_sample_points)
-        vizualize.visualize_sound(sound.sound_array, sound.number_of_channels)
+        if not cfg.suppress_plots:        
+            vizualize.visualize_sound(sound.sound_array, sound.number_of_channels)
     except:
         logging.error("Could not visualize the sound")
     return vizualize, sound
@@ -29,7 +29,8 @@ def receive_sound(vizualize: object, sound: object) -> dict:
     except:
         logging.error("Could not perform shifting")
     try:
-        vizualize.visualize_received_sound(received_sounds, cfg.number_of_microphone_arrays, cfg.number_of_microphones, sound.sample_rate)
+        if not cfg.suppress_plots:
+            vizualize.visualize_received_sound(received_sounds, cfg.number_of_microphone_arrays, cfg.number_of_microphones, sound.sample_rate)
     except:
         logging.error("Could not visualize received sounds")
     return received_sounds
@@ -50,7 +51,8 @@ def beam_forming(received_sounds: dict, vizualize: object, sound: object):
     except:
         logging.error("Could not write delay values")
     try:
-        vizualize.visualize_resultant_sounds(resultant_sounds, sound.sample_rate)
+        if not cfg.suppress_plots:
+            vizualize.visualize_resultant_sounds(resultant_sounds, sound.sample_rate)
     except:
         logging.error("Could not visualize resultant sounds")
     try:

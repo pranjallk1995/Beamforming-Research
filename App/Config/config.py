@@ -19,3 +19,6 @@ step = 1
 sound_path = os.path.join(os.getcwd(), "Audio", "Imports", "Pulse_001.wav")
 output_sound_path = os.path.join(os.getcwd(), "Audio", "Exports")
 output_export_path = os.path.join(os.getcwd(), "Exports")
+
+# suppressors
+suppress_plots = True
