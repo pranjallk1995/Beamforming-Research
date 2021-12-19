@@ -25,16 +25,16 @@ Sureshkumar Natarajan, Research Scholar @ Universiti Putra Malaysia
 To find the exact position of the source of sound with the help of two microphone arrays in a 2D plane.
 
 
-### Experimental Setup
-![Experimental_setup](/Images/Experimental_setup.jpg "Experimantal Setup" =300x300)
+### Experimental Setup:
+<img src = "./Images/Experimental_setup.jpg" width = "500" height = "500">
 
 
-### Calculation of $\theta$
-![Theta](/Images/Angular_location.jpg "Calculation of Theta" =300x300)
+### Calculation of $\theta$:
+<img src = "./Images/Angular_location.jpg" width = "500" height = "300">
 
 
-### Calculation of source location ($p$)
-![D](/Images/Actual_location.jpg "Calculation of source location" = 300x300)
+### Calculation of source location ($p$):
+<img src = "./Images/Actual_location.jpg" width = "500" height = "300">
 
 
 # Assumptions
