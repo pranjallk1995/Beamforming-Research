@@ -29,11 +29,11 @@ To find the exact position of the source of sound with the help of two microphon
 <img src = "./Images/Experimental_setup.jpg" width = "500" height = "500">
 
 
-### Calculation of $\theta$:
+### Calculation of angular location (&theta;):
 <img src = "./Images/Angular_location.jpg" width = "500" height = "300">
 
 
-### Calculation of source location ($p$):
+### Calculation of source location (p):
 <img src = "./Images/Actual_location.jpg" width = "500" height = "300">
 
 
@@ -57,7 +57,7 @@ To find the exact position of the source of sound with the help of two microphon
 
 
 # Formulas
-<div style = "background-color: rgba(255, 255, 255, 0.7)">
+<div style = "background-color: rgba(255, 255, 255, 1)">
 
 * ![\Large speed=\frac{distance}{time}](https://latex.codecogs.com/svg.latex?\Large&space;speed=\frac{distance}{time})
 
