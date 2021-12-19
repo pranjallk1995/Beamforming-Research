@@ -17,7 +17,7 @@ def load_sound() -> object:
         visualize = Visualize(sound.sound_length, sound.number_of_sample_points)
     except:
         logging.error("Could not load the sound")
-    return visualize, sound
+    return [visualize, sound]
 
 def receive_sound(visualize: object, sound: object) -> dict:
     try:
@@ -45,7 +45,7 @@ def beam_forming(received_sounds: dict, visualize: object, sound: object):
         Export().export(resultant_sounds, sound.number_of_channels, sound.sample_rate)
     except:
         logging.error("Could not export resultant sounds")
-    return beam, resultant_sounds
+    return [beam, resultant_sounds]
 
 def find_sound_source(visualize: object, beam: object) -> list:
     theta = Theta()
@@ -66,16 +66,22 @@ def find_sound_source(visualize: object, beam: object) -> list:
         visualize.visualize_location(actual_location, calculated_location)
     except:
         logging.error("Could not visualize source sound's location")
-    return calculated_location
+    return [actual_location, calculated_location]
 
-def visualize_diagrams(visualize: object, sound: object, received_sounds: dict, resultant_sounds: list) -> None:
+def visualize_diagrams(
+    visualize: object, sound: object, 
+    received_sounds: dict, resultant_sounds: list, 
+    actual_location: list, calculated_location: list
+    ) -> None:
     # try:
     visualize.visualize_dash(
         sound.sound_array,
         sound.number_of_channels,
         received_sounds,
         sound.sample_rate,
-        resultant_sounds
+        resultant_sounds,
+        actual_location,
+        calculated_location
     )
     # except:
     #     logging.error("Could not visualize Dash")
@@ -84,12 +90,12 @@ def main():
     viz, sound = load_sound()
     received_sounds = receive_sound(viz, sound)
     beam, resultant_sounds = beam_forming(received_sounds, viz, sound)
-    source_location = find_sound_source(viz, beam)
-    visualize_diagrams(viz, sound, received_sounds, resultant_sounds)
+    actual_location, calculated_location = find_sound_source(viz, beam)
     logging.info(
         "Source location of x = {} and y = {} with respect to the 2nd microphone array was successfully calculated"\
-        .format(round(source_location[0], 2), round(source_location[1], 2))
+        .format(round(calculated_location[0], 2), round(calculated_location[1], 2))
     )
+    visualize_diagrams(viz, sound, received_sounds, resultant_sounds, actual_location, calculated_location)
 
 if __name__ == "__main__":
     log_path = os.path.join(os.getcwd(), "Logs", "App_logs.log")

@@ -19,9 +19,16 @@ class Visualize:
         number_of_channels: int,
         received_sounds: dict,
         sample_rate: int,
-        resultant_sounds: list
+        resultant_sounds: list,
+        actual_location: list,
+        calculated_location: list
         ) -> None:
-        VisualizeDash().run(self.X, sound_array, number_of_channels, received_sounds, sample_rate, resultant_sounds)
+        VisualizeDash().run(
+            self.X, sound_array, 
+            number_of_channels, received_sounds, 
+            sample_rate, resultant_sounds, 
+            actual_location, calculated_location
+        )
         logging.info("Visualizations in Dash successful")
 
     def visualize_offsets(self, actual_offsets: list, calculated_offsets: list) -> None:

@@ -7,8 +7,105 @@ from dash import dcc
 from dash import html
 from plotly import subplots
 from App.shifting import Shift
+from dash.dependencies import Input, Output
 
 class VisualizeDash:
+    def setup_figure(self, actual_location: list, calculated_location: list) -> go.Figure:
+        number_x = 0.01
+        number_y = 0.08
+        normal_x = 0.05
+        trace0 = go.Scatter(
+            x = np.asarray(actual_location[0]),
+            y = np.asarray(actual_location[1]),
+            mode = "markers",
+            name = "Actual Location",
+            legendgroup = "1",
+            marker = dict(color = "green")
+        )
+        trace1 = go.Scatter(
+            x = np.asarray(calculated_location[0]),
+            y = np.asarray(calculated_location[1]),
+            mode = "markers",
+            name = "Calculated Location",
+            legendgroup = "2",
+            marker = dict(color = "red")
+        )
+        trace2 = go.Scatter(
+            x = np.zeros(cfg.number_of_microphones),
+            y = np.arange(cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta+1, cfg.d),
+            mode = "markers",
+            marker = dict(color = "yellow"),
+            showlegend = False
+        )
+        trace3 = go.Scatter(
+            x = np.zeros(cfg.number_of_microphones),
+            y = np.arange(-cfg.d, cfg.d+1, cfg.d),
+            mode = "markers",
+            marker = dict(color = "yellow"),
+            showlegend = False
+        )
+        trace4 = go.Scatter(
+            x = [-number_x, number_x, number_x, -number_x, -number_x],
+            y = [cfg.d+cfg.Delta-number_y, cfg.d+cfg.Delta-number_y, 3*cfg.d+cfg.Delta+number_y, 3*cfg.d+cfg.Delta+number_y, cfg.d+cfg.Delta-number_y],
+            mode = "lines",
+            fill = "toself",
+            marker = dict(color = "orange"),
+            showlegend = False
+        )
+        trace5 = go.Scatter(
+            x = [-number_x, number_x, number_x, -number_x, -number_x],
+            y = [-cfg.d-number_y, -cfg.d-number_y, cfg.d+number_y, cfg.d+number_y, -cfg.d-number_y],
+            mode = "lines",
+            fill = "toself",
+            marker = dict(color = "orange"),
+            showlegend = False
+        )
+        trace6 = go.Scatter(
+            x = [0, actual_location[0], 0],
+            y = [2*cfg.d+cfg.Delta, actual_location[1], 0],
+            mode = "lines",
+            line = dict(dash = "dash"),
+            marker = dict(color = "rgba(0, 255, 0, 0.5)"),
+            showlegend = False
+        )
+        trace7 = go.Scatter(
+            x = [0, calculated_location[0], 0],
+            y = [2*cfg.d+cfg.Delta, calculated_location[1], 0],
+            mode = "lines",
+            line = dict(dash = "dash"),
+            marker = dict(color = "rgba(255, 0, 0, 0.5)"),
+            showlegend = False
+        )
+        trace8 = go.Scatter(
+            x = [-normal_x, normal_x, None, -normal_x, normal_x],
+            y = [2*cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta, None, 0, 0],
+            mode = "lines",
+            marker = dict(color = "white"),
+            showlegend = False
+        )
+        data = [trace0, trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8]
+        fig = go.Figure(data)
+        fig.add_annotation(
+            x = 0,
+            y = 0.3,
+            text = "Microphone Array 2",
+            font = dict(color = "white"),
+            showarrow = False
+        )
+        fig.add_annotation(
+            x = 0,
+            y = 1,
+            text = "Microphone Array 1",
+            font = dict(color = "white"),
+            showarrow = False
+        )
+        fig.update_layout(
+            title = "Experimental Setup",
+            xaxis_title = "x-axis", yaxis_title = "y-axis",
+            template = "plotly_dark"
+        )
+        return fig
+
     def visualize_source_sound(self, X: np.ndarray, sound_array: np.ndarray, number_of_channels: int) -> go.Figure:
         trace = list()
         name = ["Left Channel", "Right Channel"]
@@ -128,15 +225,18 @@ class VisualizeDash:
         number_of_channels: int, 
         received_sounds: dict, 
         sample_rate: int, 
-        resultant_sounds: list
+        resultant_sounds: list,
+        actual_location: list,
+        calculated_location: list
         ) -> None:
         app = dash.Dash(__name__)
-        fig_original_sound = self.visualize_source_sound(X, sound_array,  number_of_channels)
-        fig_received_sounds = self.visualize_received_sound(X, received_sounds, sample_rate)
-        fig_resultant_sounds = self.visualize_resultant_sounds(X, resultant_sounds, sample_rate)
+        # fig_original_sound = self.visualize_source_sound(X, sound_array,  number_of_channels)
+        # fig_received_sounds = self.visualize_received_sound(X, received_sounds, sample_rate)
+        # fig_resultant_sounds = self.visualize_resultant_sounds(X, resultant_sounds, sample_rate)
         app.layout = html.Div(
-            style = {"backgroundColor": "black"}, 
+            style = {"backgroundColor": "#111111"}, 
             children = [
+                html.Br(),
                 html.H1(
                     children = "Visualizations",
                     style = {
@@ -144,18 +244,67 @@ class VisualizeDash:
                         "color": "white"
                     }
                 ),
-                dcc.Graph(
-                    id = "Sound source",
-                    figure = fig_original_sound
+                html.Div(
+                    style = {
+                        "width": "50%", "align": "center",
+                        "margin-left": "auto", "margin-right": "auto"
+                    },
+                    children = [
+                        dcc.Dropdown(
+                            id = "Selection",
+                            options = [
+                                {"label": "Experimental Setup", "value": "SET"},
+                                {"label": "Original Sound", "value": "ORG"},
+                                {"label": "Received Sounds", "value": "RVD"},
+                                {"label": "Rsultant Sounds", "value": "RST"}
+                            ],
+                            value = "SET",
+                            style = {"cursor": "pointer"},
+                            placeholder = "Select plots to display",
+                            multi = True
+                        ),
+                        html.Br()
+                    ]
                 ),
-                dcc.Graph(
-                    id = "Received sound",
-                    figure = fig_received_sounds
+                html.Div(
+                    style = {
+                        "width": "20%", "align": "center",
+                        "margin-left": "auto", "margin-right": "auto"
+                    },
+                    children = [
+                        dcc.Input(
+                            id = "Theta_1",
+                            value = cfg.actual_thetas[0],
+                            type = "range"
+                        ),
+                        dcc.Input(
+                            id = "text_Theta_1",
+                            value = cfg.actual_thetas[0],
+                            type = "text"
+                        ),
+                        dcc.Input(
+                            id = "Theta_2",
+                            value = cfg.actual_thetas[1],
+                            type = "range"
+                        ),
+                        dcc.Input(
+                            id = "text_Theta_2",
+                            value = cfg.actual_thetas[1],
+                            type = "text"
+                        ),
+                        html.Br()
+                    ]
                 ),
-                dcc.Graph(
-                    id = "Resultant sound",
-                    figure = fig_resultant_sounds
-                )
+                dcc.Graph(id = "Selected_Plot", figure = self.setup_figure(actual_location, calculated_location))
             ]
         )
+        # @app.callback(
+        #     Output("Selected_Plot", "figure"),
+        #     Input("Selection", "value")
+        # )
+        # def update_plot(Selection) -> go.Figure:
+        #     if "SET" in Selection:
+        #         return self.setup_figure(actual_location, calculated_location)
+        #     if "ORG" in Selection:
+        #         return self.visualize_source_sound(X, sound_array,  number_of_channels)
         app.run_server(debug=True)
