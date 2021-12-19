@@ -2,11 +2,10 @@ INFO:root:Sampling rate: 44100 samples/seconds
 INFO:root:Number of sample points: 47600
 INFO:root:Number of channels: 2
 INFO:root:Length of sound: 1.08 seconds
-INFO:root:Beamforming successful in 1.01 seconds
+INFO:root:Beamforming successful in 1.15 seconds
 INFO:root:Text file for Offsets created in Exports folder
 INFO:root:Text file for Delays created in Exports folder
 INFO:root:Resultant sounds exported successfully
 INFO:root:Theta values of 18.13 and 38.48 calculated successfully
 INFO:root:Text file for Thetas created in Exports folder
 INFO:root:Text file for Locations created in Exports folder
-INFO:root:Source location of x = 1.5 anf y = 1.19 with respect to microphone array 2 was successfully calculated
