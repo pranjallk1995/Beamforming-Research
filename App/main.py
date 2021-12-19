@@ -88,7 +88,10 @@ def main():
     received_sounds = receive_sound(viz, sound)
     beam = beam_forming(received_sounds, viz, sound)
     source_location = find_sound_source(viz, beam)
-    logging.info("Source location of x = {} anf y = {} with respect to microphone array 2 was successfully calculated".format(source_location[0], source_location[1]))
+    logging.info(
+        "Source location of x = {} anf y = {} with respect to microphone array 2 was successfully calculated"\
+        .format(round(source_location[0], 2), round(source_location[1], 2))
+    )
 
 if __name__ == "__main__":
     log_path = os.path.join(os.getcwd(), "Logs", "App_logs.log")
