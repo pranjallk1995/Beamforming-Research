@@ -6,12 +6,13 @@ username = "Pranjall"
 api_key = "oxp7TxZd22G3qte3rWoc"
 
 # fundamental
+coordinate_system = [0, 1]
 number_of_microphones = 3
 number_of_microphone_arrays = 2
 d = 0.1
 S = 343
 scanning_window = 0.2
-actual_thetas = [25, 45]
+actual_thetas = [20, 40]
 Delta = 0.5
 step = 1
 

@@ -30,11 +30,11 @@ To find the angular position of the source of sound with the help of two microph
 
 
 ### Calculation of $\theta$
-![Theta](/Images/Theta.jpg "Calculation of Theta")
+![Theta](/Images/Angular_location.jpg "Calculation of Theta")
 
 
 ### Calculation of source location ($p$)
-![D](/Images/D.jpg "Calculation of source location")
+![D](/Images/Actual_location.jpg "Calculation of source location")
 
 
 # Assumptions
@@ -60,8 +60,9 @@ To find the angular position of the source of sound with the help of two microph
 * $speed$ = $\frac{distance}{time}$
 * $\sin$($\theta$) = $\frac{\text{opposite side}}{hypotenus}$
 * $Similarity$(_A_, _B_) = $\frac{A.B}{||A|| * ||B||}$
-* $\delta$ = $S$ * $delay$
-* $\theta$ = $sin$<sup>-1</sup>($\frac{\delta}{d}$)
+* $\delta_{j}^{i+1}$ = $S$ * $delay_{i+1}$
+* $\theta_{j}^{i+1}$ = $sin$<sup>-1</sup>($\frac{\delta^{j}_{i+1}}{d}$)
+* $\theta_{j}$ = $\frac{1}{n}$ * $\sum_{i=1}^n\theta_{j}^{i+1}$ ; where $n$ is the (number of microphones in an array) - 1.
 * $p$<sub>x</sub> = $\frac{2d + \Delta}{tan(\theta_{2}) - tan(\theta_{1})}$
 * $p$<sub>y</sub> = $tan$($\theta_{2}$)$p$<sub>x</sub>
 
@@ -90,8 +91,8 @@ To find the angular position of the source of sound with the help of two microph
 | $\delta$ ($x$ previously)| Variable | Distance of the incident wavefront from the previous/subsequent incident microphone. | 
 | $\Delta$ | $0.5 meters$ | Distance between the microphone arrays. |
 | $m$<sub>i</sub><sup>j</sup> | $NA$ | $i$<sup>th</sup> microphone of $j$<sup>th</sup> microphone array. |
-| $p$<sub>x</sub> | Unknown | $x$ coordinate of the source of sound. |
-| $p$<sub>y</sub> | Unknown | $y$ coordinate of the source of sound. |
+| $p$<sub>x</sub> | Unknown | $x$ coordinate of the source of sound in meters. |
+| $p$<sub>y</sub> | Unknown | $y$ coordinate of the source of sound in meters. |
 | $S$ | $343 meters/second$ | Speed of sound in dry air at 20 <sup>o</sup>$C$.
 | $delay$ | Variable | Time taken by the incident wavefront to reach the previous/subsequent incident microphone. |
 | Sampling Rate | $44100 samples/second$ | The number of samples taken from a continuous signal to make a digital signal. |

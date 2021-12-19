@@ -189,3 +189,28 @@ class Visualize:
         with open(file_path, "a") as file:
             file.write(str(table_thetas))
         logging.info("Text file for Thetas created in Exports folder")
+
+    def visualize_location(self, actual_location: list, calculated_location: list):
+        table_location = pt.PrettyTable()
+        file_path = os.path.join(cfg.output_export_path, "Location.txt")
+        with open(file_path, "w") as file:
+            file.write(str(date.today()) + "\n\n")
+        table_location.field_names = ["Actual Location", "Calculated Location", "Error"]
+        dimension_x, dimension_y = cfg.coordinate_system
+        table_location.add_row(
+            [
+                "(" + str(round(actual_location[dimension_x], 2)) + "," + str(round(actual_location[dimension_y], 2)) + ")", 
+                "(" + str(round(calculated_location[dimension_x], 2)) + "," + str(round(calculated_location[dimension_y], 2)) + ")",
+                str(
+                    round(
+                        np.sqrt(
+                            np.square(actual_location[dimension_x] - calculated_location[dimension_x]) + \
+                            np.square(actual_location[dimension_y] - calculated_location[dimension_y])
+                        ), 
+                    2)
+                ) + " meters"
+            ]
+        )
+        with open(file_path, "a") as file:
+            file.write(str(table_location))
+        logging.info("Text file for Locations created in Exports folder")

@@ -6,5 +6,7 @@ INFO:root:Beamforming successful in 0.98 seconds
 INFO:root:Text file for Offsets created in Exports folder
 INFO:root:Text file for Delays created in Exports folder
 INFO:root:Resultant sounds exported successfully
-INFO:root:Theta values of 22.89 and 44.43 calculated successfully
+INFO:root:Theta values of 18.13 and 38.48 calculated successfully
 INFO:root:Text file for Thetas created in Exports folder
+INFO:root:Text file for Locations created in Exports folder
+INFO:root:Source location of x = 1.497423970920781 anf y = 1.190191711942951 with respect to microphone array 2 was successfully calculated

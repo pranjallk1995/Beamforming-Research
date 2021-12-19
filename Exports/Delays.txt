@@ -1,12 +1,12 @@
-2021-12-15
+2021-12-19
 
 ################# Microphone 1 ######################
 +-------------+-----------------+-------------------+
 | Sound Pulse |  Actual Delays  | Calculated Delays |
 +-------------+-----------------+-------------------+
 |   Pulse 1   |   0.0 seconds   |    0.0 seconds    |
-|   Pulse 2   | 0.00011 seconds |  0.00011 seconds  |
-|   Pulse 3   | 0.00023 seconds |  0.00023 seconds  |
+|   Pulse 2   |  9e-05 seconds  |   9e-05 seconds   |
+|   Pulse 3   | 0.00018 seconds |  0.00018 seconds  |
 +-------------+-----------------+-------------------+
 
 ################# Microphone 2 ######################
@@ -14,6 +14,6 @@
 | Sound Pulse |  Actual Delays  | Calculated Delays |
 +-------------+-----------------+-------------------+
 |   Pulse 1   |   0.0 seconds   |    0.0 seconds    |
-|   Pulse 2   |  0.0002 seconds |   0.0002 seconds  |
-|   Pulse 3   | 0.00041 seconds |  0.00041 seconds  |
+|   Pulse 2   | 0.00018 seconds |  0.00018 seconds  |
+|   Pulse 3   | 0.00036 seconds |  0.00036 seconds  |
 +-------------+-----------------+-------------------+
