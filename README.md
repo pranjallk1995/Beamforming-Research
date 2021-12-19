@@ -58,6 +58,7 @@ To find the exact position of the source of sound with the help of two microphon
 
 # Formulas
 <div style = "background-color: rgba(255, 255, 255, 1)">
+<hr />
 
 * ![\Large speed=\frac{distance}{time}](https://latex.codecogs.com/svg.latex?\Large&space;speed=\frac{distance}{time})
 
