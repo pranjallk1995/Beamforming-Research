@@ -22,7 +22,7 @@ Sureshkumar Natarajan, Research Scholar @ Universiti Putra Malaysia
 
 
 # Aim
-To find the angular position of the source of sound with the help of two microphone arrays in a 2D plane.
+To find the exact position of the source of sound with the help of two microphone arrays in a 2D plane.
 
 
 ### Experimental Setup
@@ -38,8 +38,8 @@ To find the angular position of the source of sound with the help of two microph
 
 
 # Assumptions
-1. There are 3 omnidirectional microphones in a linear array.
-1. There are 2 linear microphone arrays which are $\Delta& distance apart.
+1. There are 3 omnidirectional microphones in a linear array which are d distance apart.
+1. There are 2 linear microphone arrays which are &Delta; distance apart.
 1. All microphones are at a common fixed distance away from each other.
 1. The position of the source of sound is unknown in a 2D plane.
 1. There is only a single source of sound.
@@ -52,7 +52,7 @@ To find the angular position of the source of sound with the help of two microph
 1. There is minimal noise (max 0.5 units).
 1. There is no echo.
 1. There is minimal distortion.
-1. The sound medium is dry air at 20 <sup>o</sup>$C$.
+1. The sound medium is dry air at 20 <sup>o</sup>C.
 1. Microphones are of good quality.
 
 
