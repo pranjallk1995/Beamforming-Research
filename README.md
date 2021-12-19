@@ -26,15 +26,15 @@ To find the exact position of the source of sound with the help of two microphon
 
 
 ### Experimental Setup
-![Experimental_setup](/Images/Experimental_setup.jpg "Experimantal Setup")
+![Experimental_setup](/Images/Experimental_setup.jpg "Experimantal Setup" =300x300)
 
 
 ### Calculation of $\theta$
-![Theta](/Images/Angular_location.jpg "Calculation of Theta")
+![Theta](/Images/Angular_location.jpg "Calculation of Theta" =300x300)
 
 
 ### Calculation of source location ($p$)
-![D](/Images/Actual_location.jpg "Calculation of source location")
+![D](/Images/Actual_location.jpg "Calculation of source location" = 300x300)
 
 
 # Assumptions
