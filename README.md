@@ -57,14 +57,21 @@ To find the angular position of the source of sound with the help of two microph
 
 
 # Formulas
-* $speed$ = $\frac{distance}{time}$
-* $\sin$($\theta$) = $\frac{\text{opposite side}}{hypotenus}$
-* $Similarity$(_A_, _B_) = $\frac{A.B}{||A|| * ||B||}$
-* $\delta_{j}^{i+1}$ = $S$ * $delay_{i+1}$
-* $\theta_{j}^{i+1}$ = $sin$<sup>-1</sup>($\frac{\delta^{j}_{i+1}}{d}$)
-* $\theta_{j}$ = $\frac{1}{n}$ * $\sum_{i=1}^n\theta_{j}^{i+1}$ ; where $n$ is the (number of microphones in an array) - 1.
-* $p$<sub>x</sub> = $\frac{2d + \Delta}{tan(\theta_{2}) - tan(\theta_{1})}$
-* $p$<sub>y</sub> = $tan$($\theta_{2}$)$p$<sub>x</sub>
+![\Large speed=\frac{distance}{time}](https://latex.codecogs.com/svg.latex?\Large&space;speed=\frac{distance}{time})
+
+![\Large sin(\theta)=\frac{opposite-side}{hypotenus}](https://latex.codecogs.com/svg.latex?\Large&space;sin(\theta)=\frac{opposite-side}{hypotenus})
+
+![\Large similarity(A,B)=\frac{A.B}{||A||*||B||}](https://latex.codecogs.com/svg.latex?\Large&space;similarity(A,B)=\frac{A.B}{||A||*||B||})
+
+![\Large \delta_{i}^{j}=S*delay_{i}](https://latex.codecogs.com/svg.latex?\Large&space;\delta_{i}^{j}=S*delay_{i})
+
+![\Large \theta_{j}^{i}=sin^{-1}(\frac{\delta^{j}_{i}}{d})](https://latex.codecogs.com/svg.latex?\Large&space;\theta_{j}^{i}=sin^{-1}(\frac{\delta^{j}_{i}}{d}))
+
+![\Large \theta_{j}=\frac{1}{n}*\sum_{i=1}^{n}\theta_{j}^{i+1}](https://latex.codecogs.com/svg.latex?\Large&space;\theta_{j}=\frac{1}{n}*\sum_{i=1}^{n}\theta_{j}^{i+1})
+
+![\Large p_{x}=\frac{2d+\Delta}{tan(\theta_{2})-tan(\theta_{1})}](https://latex.codecogs.com/svg.latex?\Large&space;p_{x}=\frac{2d+\Delta}{tan(\theta_{2})-tan(\theta_{1})})
+
+![\Large p_{y}=tan(\theta_{2})*p_{x}](https://latex.codecogs.com/svg.latex?\Large&space;p_{y}=tan(\theta_{2})*p_{x})
 
 
 # Units
@@ -81,27 +88,28 @@ To find the angular position of the source of sound with the help of two microph
 # Parameter List
 | Parameter | Value | Descripttion |
 |-----------|-------|--------------|
-| Number of microphones | $3$ | Represents the number of microphones in the microphone array. |
-| Number of microphone arrays | $2$ | Represents the number of microphone arrays being used. |
-| Reference Pulse | $NA$ | The first sound pulse received by any microphone. |
-| Resultant Pulse | $NA$ | The final amplified sound pulse. |
-| $D$ | Unknown | Longitudinal distance of the source of sound from the microphone array. |
-| $\theta$<sub>i</sub> | Unknown | Angle made by the source of sound from the normal to the $i$<sup>th</sup> microphone array. |
-| $d$ | $0.1 meters$ | Distance between each microphone. |
-| $\delta$ ($x$ previously)| Variable | Distance of the incident wavefront from the previous/subsequent incident microphone. | 
-| $\Delta$ | $0.5 meters$ | Distance between the microphone arrays. |
-| $m$<sub>i</sub><sup>j</sup> | $NA$ | $i$<sup>th</sup> microphone of $j$<sup>th</sup> microphone array. |
-| $p$<sub>x</sub> | Unknown | $x$ coordinate of the source of sound in meters. |
-| $p$<sub>y</sub> | Unknown | $y$ coordinate of the source of sound in meters. |
-| $S$ | $343 meters/second$ | Speed of sound in dry air at 20 <sup>o</sup>$C$.
-| $delay$ | Variable | Time taken by the incident wavefront to reach the previous/subsequent incident microphone. |
-| Sampling Rate | $44100 samples/second$ | The number of samples taken from a continuous signal to make a digital signal. |
-| Scanning Window | $0.2 seconds$ | The duration of signal considered for finding the source. |
+| Number of microphones (n+1)| 3 | Represents the number of microphones in the microphone array. |
+| Number of microphone arrays | 2 | Represents the number of microphone arrays being used. |
+| Reference Pulse | NA | The first sound pulse received by any microphone. |
+| Resultant Pulse | NA | The final amplified sound pulse. |
+| D | Unknown | Longitudinal distance of the source of sound from the microphone array. |
+| &theta;<sub>j</sub> | Unknown | Angle made by the source of sound from the normal to the j<sup>th</sup> microphone array. |
+| d | 0.1 meters | Distance between each microphone. |
+| &delta; | Variable | Distance of the incident wavefront from the previous/subsequent incident microphone. | 
+| &Delta; | 0.5 meters | Distance between the microphone arrays. |
+| delay<sub>i</sub> | Variable | Delay in time for sound wavefront to reach the i<sup>th</sup> microphone. |
+| m<sub>i</sub><sup>j</sup> | NA | i<sup>th</sup> microphone of j<sup>th</sup> microphone array. |
+| p<sub>x</sub> | Unknown | x-coordinate of the source of sound in meters with respect to microphone 2. |
+| p<sub>y</sub> | Unknown | y-coordinate of the source of sound in meters with respect to microphone 2. |
+| S | 343 meters/second | Speed of sound in dry air at 20 <sup>o</sup>C.
+| delay | Variable | Time taken by the incident wavefront to reach the previous/subsequent incident microphone. |
+| Sampling Rate | 44100 samples/second | The number of samples taken from a continuous signal to make a digital signal. |
+| Scanning Window | 0.2 seconds | The duration of signal considered for finding the source. |
 | Shift | Variable | Represents the shift of signal in time from source to the closest microphone. |
-| Offset | Variable | Represents the shift of signal in time from microphone to microphone (depends on $d$ and $\theta$). |
-| Step | $1$ | Represents the increments of shift in time for a signal. |
+| Offset | Variable | Represents the shift of signal in time from microphone to microphone (depends on d and &theta;). |
+| Step | 1 | Represents the increments of shift in time for a signal. |
 
 
 # Caution
-* Verify the right value of $d$.
-* Verify the right value of $\Delta$
+* Verify the right value of d.
+* Verify the right value of &Delta;.
