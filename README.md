@@ -57,22 +57,25 @@ To find the exact position of the source of sound with the help of two microphon
 
 
 # Formulas
-![\Large speed=\frac{distance}{time}](https://latex.codecogs.com/svg.latex?\Large&space;speed=\frac{distance}{time})
+<div style = "background-color: rgba(255, 255, 255, 0.7)">
 
-![\Large sin(\theta)=\frac{opposite-side}{hypotenus}](https://latex.codecogs.com/svg.latex?\Large&space;sin(\theta)=\frac{opposite-side}{hypotenus})
+* ![\Large speed=\frac{distance}{time}](https://latex.codecogs.com/svg.latex?\Large&space;speed=\frac{distance}{time})
 
-![\Large similarity(A,B)=\frac{A.B}{||A||*||B||}](https://latex.codecogs.com/svg.latex?\Large&space;similarity(A,B)=\frac{A.B}{||A||*||B||})
+* ![\Large sin(\theta)=\frac{opposite-side}{hypotenus}](https://latex.codecogs.com/svg.latex?\Large&space;sin(\theta)=\frac{opposite-side}{hypotenus})
 
-![\Large \delta_{i}^{j}=S*delay_{i}](https://latex.codecogs.com/svg.latex?\Large&space;\delta_{i}^{j}=S*delay_{i})
+* ![\Large similarity(A,B)=\frac{A.B}{||A||*||B||}](https://latex.codecogs.com/svg.latex?\Large&space;similarity(A,B)=\frac{A.B}{||A||*||B||})
 
-![\Large \theta_{j}^{i}=sin^{-1}(\frac{\delta^{j}_{i}}{d})](https://latex.codecogs.com/svg.latex?\Large&space;\theta_{j}^{i}=sin^{-1}(\frac{\delta^{j}_{i}}{d}))
+* ![\Large \delta_{i}^{j}=S*delay_{i}](https://latex.codecogs.com/svg.latex?\Large&space;\delta_{i}^{j}=S*delay_{i})
 
-![\Large \theta_{j}=\frac{1}{n}*\sum_{i=1}^{n}\theta_{j}^{i+1}](https://latex.codecogs.com/svg.latex?\Large&space;\theta_{j}=\frac{1}{n}*\sum_{i=1}^{n}\theta_{j}^{i+1})
+* ![\Large \theta_{j}^{i}=sin^{-1}(\frac{\delta^{j}_{i}}{d})](https://latex.codecogs.com/svg.latex?\Large&space;\theta_{j}^{i}=sin^{-1}(\frac{\delta^{j}_{i}}{d}))
 
-![\Large p_{x}=\frac{2d+\Delta}{tan(\theta_{2})-tan(\theta_{1})}](https://latex.codecogs.com/svg.latex?\Large&space;p_{x}=\frac{2d+\Delta}{tan(\theta_{2})-tan(\theta_{1})})
+* ![\Large \theta_{j}=\frac{1}{n}*\sum_{i=1}^{n}\theta_{j}^{i+1}](https://latex.codecogs.com/svg.latex?\Large&space;\theta_{j}=\frac{1}{n}*\sum_{i=1}^{n}\theta_{j}^{i+1})
 
-![\Large p_{y}=tan(\theta_{2})*p_{x}](https://latex.codecogs.com/svg.latex?\Large&space;p_{y}=tan(\theta_{2})*p_{x})
+* ![\Large p_{x}=\frac{2d+\Delta}{tan(\theta_{2})-tan(\theta_{1})}](https://latex.codecogs.com/svg.latex?\Large&space;p_{x}=\frac{2d+\Delta}{tan(\theta_{2})-tan(\theta_{1})})
 
+* ![\Large p_{y}=tan(\theta_{2})*p_{x}](https://latex.codecogs.com/svg.latex?\Large&space;p_{y}=tan(\theta_{2})*p_{x})
+
+</div>
 
 # Units
 | Metrics | Units |
