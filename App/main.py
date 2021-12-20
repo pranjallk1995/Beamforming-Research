@@ -73,18 +73,18 @@ def visualize_diagrams(
     received_sounds: dict, resultant_sounds: list, 
     actual_location: list, calculated_location: list
     ) -> None:
-    # try:
-    visualize.visualize_dash(
-        sound.sound_array,
-        sound.number_of_channels,
-        received_sounds,
-        sound.sample_rate,
-        resultant_sounds,
-        actual_location,
-        calculated_location
-    )
-    # except:
-    #     logging.error("Could not visualize Dash")
+    try:
+        visualize.visualize_dash(
+            sound.sound_array,
+            sound.number_of_channels,
+            received_sounds,
+            sound.sample_rate,
+            resultant_sounds,
+            actual_location,
+            calculated_location
+        )
+    except:
+        logging.error("Could not visualize Dash")
 
 def main():
     viz, sound = load_sound()
