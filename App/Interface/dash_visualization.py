@@ -102,7 +102,8 @@ class VisualizeDash:
         fig.update_layout(
             title = "Experimental Setup",
             xaxis_title = "x-axis", yaxis_title = "y-axis",
-            template = "plotly_dark"
+            template = "plotly_dark",
+            height = 590
         )
         return fig
 
@@ -134,7 +135,8 @@ class VisualizeDash:
         fig_source_sound.update_xaxes(title_text = "Time", row = number_of_channels, col = 1)
         fig_source_sound.update_layout(
             title = "Original Sound",
-            template = "plotly_dark"
+            template = "plotly_dark",
+            height = 590
         )
         return fig_source_sound
 
@@ -179,7 +181,7 @@ class VisualizeDash:
             showlegend = False,
             title = "Received Sounds",
             template = "plotly_dark",
-            height = 700
+            height = 590
         )
         return fig_received_sounds
 
@@ -214,7 +216,8 @@ class VisualizeDash:
         fig_resultant_sounds.update_layout(
             title = "Resultant Sounds",
             showlegend = False,
-            template = "plotly_dark"
+            template = "plotly_dark",
+            height = 590
         )
         return fig_resultant_sounds
 
@@ -230,18 +233,19 @@ class VisualizeDash:
         calculated_location: list
         ) -> None:
         app = dash.Dash(__name__)
-        # fig_original_sound = self.visualize_source_sound(X, sound_array,  number_of_channels)
-        # fig_received_sounds = self.visualize_received_sound(X, received_sounds, sample_rate)
-        # fig_resultant_sounds = self.visualize_resultant_sounds(X, resultant_sounds, sample_rate)
+        colors = {
+            "background": "#111111",
+            "text": "white"
+        }
         app.layout = html.Div(
-            style = {"backgroundColor": "#111111"}, 
+            style = {"backgroundColor": colors["background"]}, 
             children = [
                 html.Br(),
                 html.H1(
                     children = "Visualizations",
                     style = {
                         "textAlign": "center",
-                        "color": "white"
+                        "color": colors["text"]
                     }
                 ),
                 html.Div(
@@ -251,60 +255,33 @@ class VisualizeDash:
                     },
                     children = [
                         dcc.Dropdown(
-                            id = "Selection",
+                            id = "selection",
                             options = [
                                 {"label": "Experimental Setup", "value": "SET"},
                                 {"label": "Original Sound", "value": "ORG"},
                                 {"label": "Received Sounds", "value": "RVD"},
-                                {"label": "Rsultant Sounds", "value": "RST"}
+                                {"label": "Resultant Sounds", "value": "RST"}
                             ],
                             value = "SET",
-                            style = {"cursor": "pointer"},
-                            placeholder = "Select plots to display",
-                            multi = True
+                            style = {"cursor": "pointer"}
                         ),
                         html.Br()
                     ]
                 ),
-                html.Div(
-                    style = {
-                        "width": "20%", "align": "center",
-                        "margin-left": "auto", "margin-right": "auto"
-                    },
-                    children = [
-                        dcc.Input(
-                            id = "Theta_1",
-                            value = cfg.actual_thetas[0],
-                            type = "range"
-                        ),
-                        dcc.Input(
-                            id = "text_Theta_1",
-                            value = cfg.actual_thetas[0],
-                            type = "text"
-                        ),
-                        dcc.Input(
-                            id = "Theta_2",
-                            value = cfg.actual_thetas[1],
-                            type = "range"
-                        ),
-                        dcc.Input(
-                            id = "text_Theta_2",
-                            value = cfg.actual_thetas[1],
-                            type = "text"
-                        ),
-                        html.Br()
-                    ]
-                ),
-                dcc.Graph(id = "Selected_Plot", figure = self.setup_figure(actual_location, calculated_location))
+                dcc.Graph(id = "selected_plot")
             ]
         )
-        # @app.callback(
-        #     Output("Selected_Plot", "figure"),
-        #     Input("Selection", "value")
-        # )
-        # def update_plot(Selection) -> go.Figure:
-        #     if "SET" in Selection:
-        #         return self.setup_figure(actual_location, calculated_location)
-        #     if "ORG" in Selection:
-        #         return self.visualize_source_sound(X, sound_array,  number_of_channels)
+        @app.callback(
+            Output(component_id = "selected_plot", component_property = "figure"),
+            Input(component_id = "selection", component_property = "value")
+        )
+        def update_plot(selection_value: str) -> go.Figure:
+            if selection_value == "SET":
+                return self.setup_figure(actual_location, calculated_location)
+            if selection_value == "ORG":
+                return self.visualize_source_sound(X, sound_array,  number_of_channels)
+            if selection_value == "RVD":
+                return self.visualize_received_sound(X, received_sounds, sample_rate)
+            if selection_value == "RST":
+                return self.visualize_resultant_sounds(X, resultant_sounds, sample_rate)
         app.run_server(debug=True)
