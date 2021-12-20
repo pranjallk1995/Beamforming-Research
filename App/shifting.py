@@ -14,17 +14,17 @@ class Shift:
         scanning_window_max_offset = ScanningWindow().calculate_offset(sample_rate)
         return received_array[:scanning_window_max_offset]
 
-    def perform_shifting(self, received_sound: np.ndarray, sample_rate: int) -> dict:
-        pulses = {array: [] for array in range(cfg.number_of_microphone_arrays)}
-        actual_delays = CalculateDelta().calculate_delays()
+    def perform_shifting(self, received_sound: np.ndarray, sample_rate: int, received_thetas: list) -> dict:
+        sounds = {array: [] for array in range(cfg.number_of_microphone_arrays)}
+        actual_delays = CalculateDelta(received_thetas).calculate_delays()
         offset_delay = OffsetDelay(actual_delays).calculate_offset_delay(sample_rate) 
         for array in range(cfg.number_of_microphone_arrays):
             for _ in range(cfg.number_of_microphones):
-                pulses[array].append(
+                sounds[array].append(
                     [
                         self.trim(np.roll(received_sound, self.offsets[array]), sample_rate), 
                         self.offsets[array]
                     ]
                 )
                 self.offsets[array] += offset_delay[array]
-        return pulses
+        return sounds

@@ -1,10 +1,5 @@
 import os
 
-# basic
-renderer = "vscode"
-username = "Pranjall"
-api_key = "oxp7TxZd22G3qte3rWoc"
-
 # fundamental
 coordinate_system = [0, 1]
 number_of_microphones = 3
@@ -20,6 +15,14 @@ step = 1
 sound_path = os.path.join(os.getcwd(), "Audio", "Imports", "Pulse_001.wav")
 output_sound_path = os.path.join(os.getcwd(), "Audio", "Exports")
 output_export_path = os.path.join(os.getcwd(), "Exports")
+output_numpy_path = os.path.join(os.getcwd(), "Exports")
 
-# suppressors
-suppress_plots = True
+# flags
+suppress_plots = False
+calculate_errors = True
+
+# plotting
+threshold = 0.3
+number_x = 0.01
+number_y = 0.08
+normal_x = 0.05

@@ -3,3 +3,4 @@ scipy >= 1.7.3
 plotly >= 5.4.0
 prettytable >= 2.4.0
 dash >= 2.0.0
+tqdm >= 4.62.3

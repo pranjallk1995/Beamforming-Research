@@ -21,7 +21,7 @@ class Visualize:
         sample_rate: int,
         resultant_sounds: list,
         actual_location: list,
-        calculated_location: list
+        calculated_location: list,
         ) -> None:
         VisualizeDash().run(
             self.X, sound_array, 

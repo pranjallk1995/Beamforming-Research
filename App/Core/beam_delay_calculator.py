@@ -46,7 +46,7 @@ class BeamForming:
     def sum_sounds(self, reference_sound: np.ndarray, secondary_sound: np.ndarray, offset: int) -> np.ndarray:
         return np.add(reference_sound, np.roll(secondary_sound, -offset))
 
-    def calculate_offsets(self, received_sounds: dict, sample_rate: int) -> list: 
+    def calculate_offsets(self, received_sounds: dict, sample_rate: int, caller: str = None) -> list: 
         reference_sound = None
         scanning_window_max_offset = ScanningWindow().calculate_offset(sample_rate)
         resultant_sounds = [np.zeros(scanning_window_max_offset) for _ in range(cfg.number_of_microphone_arrays)]
@@ -76,5 +76,6 @@ class BeamForming:
                             self.calculated_offsets[array][number]
                         )
                     )
-        logging.info("Beamforming successful in {} seconds".format(round(time.time() - start, 2)))
+        if caller == "main":
+            logging.info("Beamforming successful in {} seconds".format(round(time.time() - start, 2)))
         return resultant_sounds
