@@ -19,7 +19,7 @@ output_numpy_path = os.path.join(os.getcwd(), "Exports")
 
 # flags
 suppress_plots = False
-calculate_errors = True
+calculate_errors = False
 
 # plotting
 threshold = 0.3

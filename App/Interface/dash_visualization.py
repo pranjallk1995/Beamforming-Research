@@ -254,71 +254,19 @@ class VisualizeDash:
                     showlegend = False
                 )
             )
-        trace.append(
-                go.Scatter(
-                x = np.zeros(cfg.number_of_microphones),
-                y = np.arange(cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta+1, cfg.d),
-                mode = "markers",
-                marker = dict(color = "yellow"),
-                showlegend = False
-            )
-        )
-        trace.append(
-            go.Scatter(
-                x = np.zeros(cfg.number_of_microphones),
-                y = np.arange(-cfg.d, cfg.d+1, cfg.d),
-                mode = "markers",
-                marker = dict(color = "yellow"),
-                showlegend = False
-            )
-        )
-        trace.append(
-            go.Scatter(
-                x = [-cfg.number_x, cfg.number_x, cfg.number_x, -cfg.number_x, -cfg.number_x],
-                y = [cfg.d+cfg.Delta-cfg.number_y, cfg.d+cfg.Delta-cfg.number_y, 3*cfg.d+cfg.Delta+cfg.number_y, 3*cfg.d+cfg.Delta+cfg.number_y, cfg.d+cfg.Delta-cfg.number_y],
-                mode = "lines",
-                fill = "toself",
-                marker = dict(color = "orange"),
-                showlegend = False
-            )
-        )
-        trace.append( 
-            go.Scatter(
-                x = [-cfg.number_x, cfg.number_x, cfg.number_x, -cfg.number_x, -cfg.number_x],
-                y = [-cfg.d-cfg.number_y, -cfg.d-cfg.number_y, cfg.d+cfg.number_y, cfg.d+cfg.number_y, -cfg.d-cfg.number_y],
-                mode = "lines",
-                fill = "toself",
-                marker = dict(color = "orange"),
-                showlegend = False
-            )
-        )
         data = trace
         fig_range = go.Figure(data)
-        fig_range.add_annotation(
-            x = 0,
-            y = 0.3,
-            text = "Microphone Array 2",
-            font = dict(color = "white"),
-            showarrow = False
-        )
-        fig_range.add_annotation(
-            x = 0,
-            y = 1,
-            text = "Microphone Array 1",
-            font = dict(color = "white"),
-            showarrow = False
-        )
         fig_range.update_layout(
-            title = "Experimental Setup",
+            title = "Range Plot",
             xaxis_title = "x-axis", yaxis_title = "y-axis",
             template = "plotly_dark",
             height = 575
         )
         fig_range.update_xaxes(
-            range = (-0.2, 5)
+            range = (-5, 5)
         )
         fig_range.update_yaxes(
-            range = (-0.3, 4)
+            range = (-5, 5)
         )
         return fig_range
 
