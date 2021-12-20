@@ -2,7 +2,7 @@ INFO:root:Sampling rate: 44100 samples/seconds
 INFO:root:Number of sample points: 47600
 INFO:root:Number of channels: 2
 INFO:root:Length of sound: 1.08 seconds
-INFO:root:Beamforming successful in 1.08 seconds
+INFO:root:Beamforming successful in 1.11 seconds
 INFO:root:Text file for Offsets created in Exports folder
 INFO:root:Text file for Delays created in Exports folder
 INFO:root:Resultant sounds exported successfully

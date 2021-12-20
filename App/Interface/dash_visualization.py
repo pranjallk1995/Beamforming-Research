@@ -105,6 +105,12 @@ class VisualizeDash:
             template = "plotly_dark",
             height = 590
         )
+        fig.update_xaxes(
+            range = (-0.2, 2)
+        )
+        fig.update_yaxes(
+            range = (-0.3, 2)
+        )
         return fig
 
     def visualize_source_sound(self, X: np.ndarray, sound_array: np.ndarray, number_of_channels: int) -> go.Figure:
