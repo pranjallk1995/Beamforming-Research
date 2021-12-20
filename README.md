@@ -7,6 +7,10 @@
 ![plotly (latest)](https://img.shields.io/pypi/v/plotly?label=lateset)
 ![prettytable](https://img.shields.io/badge/prettytable-v2.4.0-information)
 ![prettytable (latest)](https://img.shields.io/pypi/v/prettytable?label=lateset)
+![dash](https://img.shields.io/badge/dash-v2.0.0-information)
+![dash (latest)](https://img.shields.io/pypi/v/dash?label=lateset)
+![tqdm](https://img.shields.io/badge/tqdm-v4.62.0-information)
+![tdqm (latest)](https://img.shields.io/pypi/v/tqdm?label=lateset)
 
 
 # Introduction

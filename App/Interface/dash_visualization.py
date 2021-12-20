@@ -1,4 +1,6 @@
+import os
 import dash
+import logging
 import numpy as np
 import plotly.graph_objs as go
 import App.Config.config as cfg
@@ -10,10 +12,8 @@ from App.shifting import Shift
 from dash.dependencies import Input, Output
 
 class VisualizeDash:
+
     def setup_figure(self, actual_location: list, calculated_location: list) -> go.Figure:
-        number_x = 0.01
-        number_y = 0.08
-        normal_x = 0.05
         trace0 = go.Scatter(
             x = np.asarray(actual_location[0]),
             y = np.asarray(actual_location[1]),
@@ -45,16 +45,16 @@ class VisualizeDash:
             showlegend = False
         )
         trace4 = go.Scatter(
-            x = [-number_x, number_x, number_x, -number_x, -number_x],
-            y = [cfg.d+cfg.Delta-number_y, cfg.d+cfg.Delta-number_y, 3*cfg.d+cfg.Delta+number_y, 3*cfg.d+cfg.Delta+number_y, cfg.d+cfg.Delta-number_y],
+            x = [-cfg.number_x, cfg.number_x, cfg.number_x, -cfg.number_x, -cfg.number_x],
+            y = [cfg.d+cfg.Delta-cfg.number_y, cfg.d+cfg.Delta-cfg.number_y, 3*cfg.d+cfg.Delta+cfg.number_y, 3*cfg.d+cfg.Delta+cfg.number_y, cfg.d+cfg.Delta-cfg.number_y],
             mode = "lines",
             fill = "toself",
             marker = dict(color = "orange"),
             showlegend = False
         )
         trace5 = go.Scatter(
-            x = [-number_x, number_x, number_x, -number_x, -number_x],
-            y = [-cfg.d-number_y, -cfg.d-number_y, cfg.d+number_y, cfg.d+number_y, -cfg.d-number_y],
+            x = [-cfg.number_x, cfg.number_x, cfg.number_x, -cfg.number_x, -cfg.number_x],
+            y = [-cfg.d-cfg.number_y, -cfg.d-cfg.number_y, cfg.d+cfg.number_y, cfg.d+cfg.number_y, -cfg.d-cfg.number_y],
             mode = "lines",
             fill = "toself",
             marker = dict(color = "orange"),
@@ -77,7 +77,7 @@ class VisualizeDash:
             showlegend = False
         )
         trace8 = go.Scatter(
-            x = [-normal_x, normal_x, None, -normal_x, normal_x],
+            x = [-cfg.normal_x, cfg.normal_x, None, -cfg.normal_x, cfg.normal_x],
             y = [2*cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta, None, 0, 0],
             mode = "lines",
             marker = dict(color = "white"),
@@ -103,7 +103,7 @@ class VisualizeDash:
             title = "Experimental Setup",
             xaxis_title = "x-axis", yaxis_title = "y-axis",
             template = "plotly_dark",
-            height = 590
+            height = 575
         )
         fig.update_xaxes(
             range = (-0.2, 2)
@@ -142,7 +142,7 @@ class VisualizeDash:
         fig_source_sound.update_layout(
             title = "Original Sound",
             template = "plotly_dark",
-            height = 590
+            height = 575
         )
         return fig_source_sound
 
@@ -187,7 +187,7 @@ class VisualizeDash:
             showlegend = False,
             title = "Received Sounds",
             template = "plotly_dark",
-            height = 590
+            height = 575
         )
         return fig_received_sounds
 
@@ -223,9 +223,52 @@ class VisualizeDash:
             title = "Resultant Sounds",
             showlegend = False,
             template = "plotly_dark",
-            height = 590
+            height = 575
         )
         return fig_resultant_sounds
+
+    def visualize_error(self, X: np.ndarray, Y: np.ndarray, errors: np.ndarray) -> go.Figure:
+        trace = go.Scatter3d(
+            x = X, y = Y, z = errors, mode = "markers", 
+            marker = dict(size = 2, color = errors, colorscale = "OrRd")
+        )
+        fig_error = go.Figure([trace])
+        fig_error.update_layout(
+            title = "Error Plot",
+            scene = dict(xaxis_title = "Theta 1", yaxis_title = "Theta 2", zaxis_title = "Error"),
+            template = "plotly_dark",
+            margin = dict(l = 65, r = 50, b = 65, t = 90),
+            height = 1000
+        )
+        return fig_error
+    
+    def visualize_range(self, actual_locations: np.ndarray) -> go.Figure:
+        trace = list()
+        for location in actual_locations:
+            trace.append(
+                go.Scatter(
+                    x = [location[0]],
+                    y = [location[1]],
+                    mode = "markers",
+                    marker = dict(size = 2, color = "green"),
+                    showlegend = False
+                )
+            )
+        data = trace
+        fig_range = go.Figure(data)
+        fig_range.update_layout(
+            title = "Range Plot",
+            xaxis_title = "x-axis", yaxis_title = "y-axis",
+            template = "plotly_dark",
+            height = 575
+        )
+        fig_range.update_xaxes(
+            range = (-5, 5)
+        )
+        fig_range.update_yaxes(
+            range = (-5, 5)
+        )
+        return fig_range
 
     def run(
         self, 
@@ -266,7 +309,9 @@ class VisualizeDash:
                                 {"label": "Experimental Setup", "value": "SET"},
                                 {"label": "Original Sound", "value": "ORG"},
                                 {"label": "Received Sounds", "value": "RVD"},
-                                {"label": "Resultant Sounds", "value": "RST"}
+                                {"label": "Resultant Sounds", "value": "RST"},
+                                {"label": "Error Plot", "value": "ERR"},
+                                {"label": "Range Plot", "value": "RNG"}
                             ],
                             value = "SET",
                             style = {"cursor": "pointer"}
@@ -274,20 +319,42 @@ class VisualizeDash:
                         html.Br()
                     ]
                 ),
-                dcc.Graph(id = "selected_plot")
+                html.Div(
+                    children = [
+                        dcc.Loading(id = "loading_plot"),
+                        dcc.Graph(id = "selected_plot")
+                    ]
+                )
             ]
         )
         @app.callback(
+            Output(component_id = "loading_plot", component_property = "children"),
             Output(component_id = "selected_plot", component_property = "figure"),
             Input(component_id = "selection", component_property = "value")
         )
-        def update_plot(selection_value: str) -> go.Figure:
+        def update_plot(selection_value: str):
             if selection_value == "SET":
-                return self.setup_figure(actual_location, calculated_location)
+                return selection_value, self.setup_figure(actual_location, calculated_location)
             if selection_value == "ORG":
-                return self.visualize_source_sound(X, sound_array,  number_of_channels)
+                return selection_value, self.visualize_source_sound(X, sound_array,  number_of_channels)
             if selection_value == "RVD":
-                return self.visualize_received_sound(X, received_sounds, sample_rate)
+                return selection_value, self.visualize_received_sound(X, received_sounds, sample_rate)
             if selection_value == "RST":
-                return self.visualize_resultant_sounds(X, resultant_sounds, sample_rate)
-        app.run_server(debug=True)
+                return selection_value, self.visualize_resultant_sounds(X, resultant_sounds, sample_rate)
+            if selection_value == "ERR":
+                with open(os.path.join(cfg.output_numpy_path, "Error_values.npy"), "rb") as file:
+                    X_errors = np.load(file)
+                    Y_errors = np.load(file)
+                    errors = np.load(file)
+                    actual_locations = np.load(file)
+                    calculated_locations = np.load(file)
+                return selection_value, self.visualize_error(X_errors, Y_errors, errors)
+            if selection_value == "RNG":
+                with open(os.path.join(cfg.output_numpy_path, "Error_values.npy"), "rb") as file:
+                    X_errors = np.load(file)
+                    Y_errors = np.load(file)
+                    errors = np.load(file)
+                    actual_locations = np.load(file)
+                    calculated_locations = np.load(file)
+                return selection_value, self.visualize_range(actual_locations)
+        app.run_server(debug = True)
