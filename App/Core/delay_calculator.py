@@ -48,8 +48,8 @@ class BeamForming:
 
     def calculate_offsets(self, received_sounds: dict, sample_rate: int) -> list: 
         reference_sound = None
-        resultant_sounds = [0 for _ in range(cfg.number_of_microphone_arrays)]
         scanning_window_max_offset = ScanningWindow().calculate_offset(sample_rate)
+        resultant_sounds = [np.zeros(scanning_window_max_offset) for _ in range(cfg.number_of_microphone_arrays)]
         possible_offsets = np.arange(start = 0, stop = scanning_window_max_offset, step = cfg.step)
         start = time.time()
         for array in range(cfg.number_of_microphone_arrays):
@@ -68,10 +68,13 @@ class BeamForming:
                             possible_offsets
                         )
                     )
-                    resultant_sounds[array] += self.sum_sounds(
-                        reference_sound, 
-                        secondary_sound, 
-                        self.calculated_offsets[array][number]
+                    resultant_sounds[array] = np.add(
+                        resultant_sounds[array],
+                        self.sum_sounds(
+                            reference_sound, 
+                            secondary_sound, 
+                            self.calculated_offsets[array][number]
+                        )
                     )
         logging.info("Beamforming successful in {} seconds".format(round(time.time() - start, 2)))
         return resultant_sounds

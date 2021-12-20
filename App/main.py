@@ -14,26 +14,16 @@ def load_sound() -> object:
     sound = LoadSound(cfg.sound_path)
     try:
         sound.load_sound()
+        visualize = Visualize(sound.sound_length, sound.number_of_sample_points)
     except:
         logging.error("Could not load the sound")
-    try:
-        visualize = Visualize(sound.sound_length, sound.number_of_sample_points)
-        if not cfg.suppress_plots:        
-            visualize.visualize_sound(sound.sound_array, sound.number_of_channels)
-    except:
-        logging.error("Could not visualize the sound")
-    return visualize, sound
+    return [visualize, sound]
 
 def receive_sound(visualize: object, sound: object) -> dict:
     try:
         received_sounds = Shift().perform_shifting(sound.get_left_channel(), sound.sample_rate)
     except:
         logging.error("Could not perform shifting")
-    try:
-        if not cfg.suppress_plots:
-            visualize.visualize_received_sound(received_sounds, cfg.number_of_microphone_arrays, cfg.number_of_microphones, sound.sample_rate)
-    except:
-        logging.error("Could not visualize received sounds")
     return received_sounds
 
 def beam_forming(received_sounds: dict, visualize: object, sound: object):
@@ -52,15 +42,10 @@ def beam_forming(received_sounds: dict, visualize: object, sound: object):
     except:
         logging.error("Could not write delay values")
     try:
-        if not cfg.suppress_plots:
-            visualize.visualize_resultant_sounds(resultant_sounds, sound.sample_rate)
-    except:
-        logging.error("Could not visualize resultant sounds")
-    try:
         Export().export(resultant_sounds, sound.number_of_channels, sound.sample_rate)
     except:
         logging.error("Could not export resultant sounds")
-    return beam
+    return [beam, resultant_sounds]
 
 def find_sound_source(visualize: object, beam: object) -> list:
     theta = Theta()
@@ -81,17 +66,36 @@ def find_sound_source(visualize: object, beam: object) -> list:
         visualize.visualize_location(actual_location, calculated_location)
     except:
         logging.error("Could not visualize source sound's location")
-    return calculated_location
+    return [actual_location, calculated_location]
+
+def visualize_diagrams(
+    visualize: object, sound: object, 
+    received_sounds: dict, resultant_sounds: list, 
+    actual_location: list, calculated_location: list
+    ) -> None:
+    # try:
+    visualize.visualize_dash(
+        sound.sound_array,
+        sound.number_of_channels,
+        received_sounds,
+        sound.sample_rate,
+        resultant_sounds,
+        actual_location,
+        calculated_location
+    )
+    # except:
+    #     logging.error("Could not visualize Dash")
 
 def main():
     viz, sound = load_sound()
     received_sounds = receive_sound(viz, sound)
-    beam = beam_forming(received_sounds, viz, sound)
-    source_location = find_sound_source(viz, beam)
+    beam, resultant_sounds = beam_forming(received_sounds, viz, sound)
+    actual_location, calculated_location = find_sound_source(viz, beam)
     logging.info(
-        "Source location of x = {} anf y = {} with respect to microphone array 2 was successfully calculated"\
-        .format(round(source_location[0], 2), round(source_location[1], 2))
+        "Source location of x = {} and y = {} with respect to the 2nd microphone array was successfully calculated"\
+        .format(round(calculated_location[0], 2), round(calculated_location[1], 2))
     )
+    visualize_diagrams(viz, sound, received_sounds, resultant_sounds, actual_location, calculated_location)
 
 if __name__ == "__main__":
     log_path = os.path.join(os.getcwd(), "Logs", "App_logs.log")
