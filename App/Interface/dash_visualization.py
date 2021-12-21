@@ -34,6 +34,7 @@ class VisualizeDash:
             x = np.zeros(cfg.number_of_microphones),
             y = np.arange(cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta+1, cfg.d),
             mode = "markers",
+            name = "Microphone Array 1",
             marker = dict(color = "yellow"),
             showlegend = False
         )
@@ -41,6 +42,7 @@ class VisualizeDash:
             x = np.zeros(cfg.number_of_microphones),
             y = np.arange(-cfg.d, cfg.d+1, cfg.d),
             mode = "markers",
+            name = "Microphone Array 2",
             marker = dict(color = "yellow"),
             showlegend = False
         )
@@ -49,6 +51,7 @@ class VisualizeDash:
             y = [cfg.d+cfg.Delta-cfg.number_y, cfg.d+cfg.Delta-cfg.number_y, 3*cfg.d+cfg.Delta+cfg.number_y, 3*cfg.d+cfg.Delta+cfg.number_y, cfg.d+cfg.Delta-cfg.number_y],
             mode = "lines",
             fill = "toself",
+            name = "Microphone Array 1",
             marker = dict(color = "orange"),
             showlegend = False
         )
@@ -57,6 +60,7 @@ class VisualizeDash:
             y = [-cfg.d-cfg.number_y, -cfg.d-cfg.number_y, cfg.d+cfg.number_y, cfg.d+cfg.number_y, -cfg.d-cfg.number_y],
             mode = "lines",
             fill = "toself",
+            name = "Microphone Array 2",
             marker = dict(color = "orange"),
             showlegend = False
         )
@@ -64,6 +68,7 @@ class VisualizeDash:
             x = [0, actual_location[0], 0],
             y = [2*cfg.d+cfg.Delta, actual_location[1], 0],
             mode = "lines",
+            name = "actual lines",
             line = dict(dash = "dash"),
             marker = dict(color = "rgba(0, 255, 0, 0.5)"),
             showlegend = False
@@ -72,6 +77,7 @@ class VisualizeDash:
             x = [0, calculated_location[0], 0],
             y = [2*cfg.d+cfg.Delta, calculated_location[1], 0],
             mode = "lines",
+            name = "calculated lines",
             line = dict(dash = "dash"),
             marker = dict(color = "rgba(255, 0, 0, 0.5)"),
             showlegend = False
@@ -80,8 +86,8 @@ class VisualizeDash:
             x = [-cfg.normal_x, cfg.normal_x, None, -cfg.normal_x, cfg.normal_x],
             y = [2*cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta, None, 0, 0],
             mode = "lines",
+            name = "normal lines",
             marker = dict(color = "white"),
-            showlegend = False
         )
         data = [trace0, trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8]
         fig = go.Figure(data)
@@ -158,12 +164,13 @@ class VisualizeDash:
                     go.Scatter(
                         x = X,
                         y = received_sounds[array][number][0],
-                        mode = "lines"
+                        mode = "lines",
+                        name = "Microphone Array {}, Microphone {}".format(array + 1, number + 1)
                     )
                 )
         for number in range(cfg.number_of_microphones):
             for array in range(cfg.number_of_microphone_arrays):
-                titles.append("Microphone array " + str(array + 1) + ": Pulse " + str(number + 1))
+                titles.append("Microphone array " + str(array + 1) + ": Sound " + str(number + 1))
         fig_received_sounds = subplots.make_subplots(
             rows = rows, cols = columns, 
             shared_xaxes = True,
@@ -203,7 +210,8 @@ class VisualizeDash:
                     marker = dict(
                         color = colors[array]
                     ),
-                    mode = "lines"
+                    mode = "lines",
+                    name = "Resultant from Microphone array {}".format(array + 1)
                 )
             )
         titles = list()
@@ -229,10 +237,13 @@ class VisualizeDash:
 
     def visualize_error(self, X: np.ndarray, Y: np.ndarray, errors: np.ndarray) -> go.Figure:
         trace = go.Scatter3d(
-            x = X, y = Y, z = errors, mode = "markers", 
+            x = X, y = Y, z = errors, mode = "markers", name = "Error Plot",
             marker = dict(size = 2, color = errors, colorscale = "OrRd")
         )
         fig_error = go.Figure([trace])
+        fig_error.update_traces(
+            hovertemplate = "Theta 1: %{x} <br>Theta 2: %{y} <br>Error: %{z}"
+        )
         fig_error.update_layout(
             title = "Error Plot",
             scene = dict(xaxis_title = "Theta 1", yaxis_title = "Theta 2", zaxis_title = "Error"),
@@ -253,6 +264,7 @@ class VisualizeDash:
             x = np.asarray(location_x),
             y = np.asarray(location_y),
             mode = "markers",
+            name = "Range Points",
             marker = dict(size = 2, color = errors, colorscale = "OrRd"),
             showlegend = False
         )
@@ -260,6 +272,7 @@ class VisualizeDash:
             x = np.zeros(cfg.number_of_microphones),
             y = np.arange(cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta+1, cfg.d),
             mode = "markers",
+            name = "Microphone Array 1",
             marker = dict(color = "yellow"),
             showlegend = False
         )
@@ -267,11 +280,15 @@ class VisualizeDash:
             x = np.zeros(cfg.number_of_microphones),
             y = np.arange(-cfg.d, cfg.d+1, cfg.d),
             mode = "markers",
+            name = "Microphone Array 2",
             marker = dict(color = "yellow"),
             showlegend = False
         )
         data = [trace0, trace1, trace2]
         fig_range = go.Figure(data)
+        fig_range.update_traces(
+            hovertemplate = "Theta 1: %{x} <br>Theta 2: %{y} <br>Error: %{color}"
+        )
         fig_range.update_layout(
             title = "Range Plot",
             xaxis_title = "x-axis", yaxis_title = "y-axis",
@@ -279,10 +296,10 @@ class VisualizeDash:
             height = 575
         )
         fig_range.update_xaxes(
-            range = (-5, 5)
+            range = (-4, 4)
         )
         fig_range.update_yaxes(
-            range = (-5, 5)
+            range = (-4, 4)
         )
         return fig_range
 
