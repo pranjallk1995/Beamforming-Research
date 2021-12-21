@@ -242,19 +242,35 @@ class VisualizeDash:
         )
         return fig_error
     
-    def visualize_range(self, actual_locations: np.ndarray) -> go.Figure:
-        trace = list()
+    def visualize_range(self, actual_locations: np.ndarray, errors: np.ndarray) -> go.Figure:
+        location_x = list()
+        location_y = list()
         for location in actual_locations:
-            trace.append(
-                go.Scatter(
-                    x = [location[0]],
-                    y = [location[1]],
-                    mode = "markers",
-                    marker = dict(size = 2, color = "green"),
-                    showlegend = False
-                )
-            )
-        data = trace
+            if np.inf not in location:
+                location_x.append(location[0])
+                location_y.append(location[1])
+        trace0 = go.Scatter(
+            x = np.asarray(location_x),
+            y = np.asarray(location_y),
+            mode = "markers",
+            marker = dict(size = 2, color = errors, colorscale = "OrRd"),
+            showlegend = False
+        )
+        trace1 = go.Scatter(
+            x = np.zeros(cfg.number_of_microphones),
+            y = np.arange(cfg.d+cfg.Delta, 2*cfg.d+cfg.Delta+1, cfg.d),
+            mode = "markers",
+            marker = dict(color = "yellow"),
+            showlegend = False
+        )
+        trace2 = go.Scatter(
+            x = np.zeros(cfg.number_of_microphones),
+            y = np.arange(-cfg.d, cfg.d+1, cfg.d),
+            mode = "markers",
+            marker = dict(color = "yellow"),
+            showlegend = False
+        )
+        data = [trace0, trace1, trace2]
         fig_range = go.Figure(data)
         fig_range.update_layout(
             title = "Range Plot",
@@ -356,5 +372,5 @@ class VisualizeDash:
                     errors = np.load(file)
                     actual_locations = np.load(file)
                     calculated_locations = np.load(file)
-                return selection_value, self.visualize_range(actual_locations)
+                return selection_value, self.visualize_range(actual_locations, errors)
         app.run_server(debug = True)
