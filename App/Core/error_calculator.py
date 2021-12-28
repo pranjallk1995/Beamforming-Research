@@ -1,6 +1,7 @@
 import os
 import warnings
 import numpy as np
+import prettytable as pt
 import App.Config.config as cfg
 
 from tqdm import tqdm
@@ -20,7 +21,7 @@ class CalculateError:
 
     def calculate_errors(self, sound_array: np.ndarray, sample_rate: int) -> None:
         warnings.filterwarnings("ignore")
-        thetas = np.arange(start = 0, stop = 90, step = cfg.step)
+        thetas = np.arange(start = -90, stop = 90, step = cfg.step)
         print("\nCalculating Errors:\n")
         for theta_x in tqdm(thetas, position = 0, bar_format = "{l_bar}{bar: 50}{r_bar}"):
             for theta_y in tqdm(thetas, position = 1, leave = False, bar_format = "{l_bar}{bar: 50}{r_bar}"):

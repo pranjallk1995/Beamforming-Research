@@ -287,7 +287,7 @@ class VisualizeDash:
         data = [trace0, trace1, trace2]
         fig_range = go.Figure(data)
         fig_range.update_traces(
-            hovertemplate = "Theta 1: %{x} <br>Theta 2: %{y} <br>Error: %{color}"
+            hovertemplate = "Theta 1: %{x} <br>Theta 2: %{y} <br>Error: %{marker[color]}"
         )
         fig_range.update_layout(
             title = "Range Plot",
