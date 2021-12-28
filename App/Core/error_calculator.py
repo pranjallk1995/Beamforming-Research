@@ -1,7 +1,6 @@
 import os
 import warnings
 import numpy as np
-import prettytable as pt
 import App.Config.config as cfg
 
 from tqdm import tqdm

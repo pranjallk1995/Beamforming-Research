@@ -18,7 +18,7 @@ output_export_path = os.path.join(os.getcwd(), "Exports")
 output_numpy_path = os.path.join(os.getcwd(), "Exports")
 
 # flags
-suppress_plots = False
+suppress_plots = True
 calculate_errors = True
 
 # plotting
