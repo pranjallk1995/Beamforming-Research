@@ -20,7 +20,7 @@ def load_sound() -> object:
         logging.error("Could not load the sound")
     return [visualize, sound]
 
-def receive_sound(visualize: object, sound: object) -> dict:
+def receive_sound(sound: object) -> dict:
     try:
         received_sounds = Shift().perform_shifting(sound.get_left_channel(), sound.sample_rate, cfg.actual_thetas)
     except:
