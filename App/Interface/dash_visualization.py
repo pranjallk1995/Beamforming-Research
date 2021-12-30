@@ -265,7 +265,7 @@ class VisualizeDash:
             y = np.asarray(location_y),
             mode = "markers",
             name = "Range Points",
-            marker = dict(size = 2, color = errors, colorscale = "OrRd"),
+            marker = dict(size = 2, color = "green"),
             showlegend = False
         )
         trace1 = go.Scatter(
@@ -287,7 +287,7 @@ class VisualizeDash:
         data = [trace0, trace1, trace2]
         fig_range = go.Figure(data)
         fig_range.update_traces(
-            hovertemplate = "Theta 1: %{x} <br>Theta 2: %{y} <br>Error: %{marker[color]}"
+            hovertemplate = "Theta 1: %{x} <br>Theta 2: %{y}"
         )
         fig_range.update_layout(
             title = "Range Plot",
